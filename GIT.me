@@ -1,0 +1,68 @@
+Some useful  GIT command:
+
+#### WORKING WITH EXISTING REPOSITORY
+
+### To clone a repository:
+git clone <git path> // This can be a relative / absolute local path, or a remote server path Ex.: c:\GIT_Bare\TP1   OR   ssh://ocontant@ws2.yopcloud.com:/TP1
+
+### Once you have cloned your forked repo, you do need to add a remote pointing to the original like the previous answer said. They like to call it upstream, but it doesn't matter.
+git remote add upstream git://github.com/octocat/Spoon-Knife.git
+
+
+### To add a branch from the remote repository to the local workspace
+git checkout -b <nameofnewbranch> 
+git push origin <nameofbranch>
+
+### To add a remote branch in the workspace
+git checkout <branchname>
+git fetch origin <branchnameonremote>
+git pull origin <branchnameonremote>  
+
+
+### To add new files to your staging:
+git add <newfiles, use wildcard>  	// This will add all the files you describe to the git 
+git stage *  						// Before committing, you need to add files affected by the commit.
+
+### To commit a change:
+git commit -m “description”
+
+### To push your change to the remote repository for the team (Git Bare)
+git push origin master // For the master branch
+git push origin <branchname>  // For a specific branch
+
+### To pull from the remote repository (Git Bare)
+git pull  // will pull the current checkout branch
+
+
+### To force the update of your local branch with the remote branch
+git reset --hard origin/[branchname]
+
+
+### To create a new branch:  
+git checkout -b <newbranch> // This will create a new branch independent from master from the current status of master)
+
+### To sync your branch with the current status of Master
+git checkout master
+git pull
+git checkout <branchname>
+git merge master
+
+### To keep <branchname> in sync with master
+## then when you're ready to put <branchname> into master, first merge in master like above, then ...
+git checkout master
+git merge <branchname>
+git push origin master
+
+### To create a tag release 
+### https://git-scm.com/book/en/v2/Git-Basics-Tagging
+git tag -a v.1.0 -m "Some Information"
+
+
+
+#### CREATE NEW REPOSITORY 
+
+### To create a new workspace repository from scratch:
+git init
+
+### To create a new Bare repository:
+git init –bare
