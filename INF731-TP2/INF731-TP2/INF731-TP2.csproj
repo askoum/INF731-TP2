@@ -43,10 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="comptes.cs" />
-    <Compile Include="clients.cs" />
+    <Compile Include="Banque.cs" />
+    <Compile Include="ClientIndividuel.cs" />
+    <Compile Include="Compte.cs" />
+    <Compile Include="Client.cs" />
+    <Compile Include="CompteChèque.cs" />
+    <Compile Include="GestionFichiers.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Temporaire.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
