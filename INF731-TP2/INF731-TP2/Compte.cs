@@ -24,7 +24,10 @@ namespace INF731_TP2
         private double soldeCompte;
 
 
+
+
         #region // Déclaration des propriétés
+        public int Indice { get; private set; }     // Les classes enfants ont besoin de connaître l'indice du tableauÉléments du constructeur
 
         public string this[int indice]
         {
@@ -105,24 +108,15 @@ namespace INF731_TP2
          * @param statutCompte
          * @param soldeCompte
          */
-        public Compte(string[] tableauDesÉléments)
+        public Compte(string[] numéroClient, string typeDeCompte, string caracteristiqueDeCompte,
+        string numéroCompte, char statutCompte, double soldeCompte)
         {
-            // Liste des éléments propres à tous les types de compte
-            int indice = 0;
-            
-            NuméroClients[0] = tableauDesÉléments[0];
-            TypeDeCompte = tableauDesÉléments[1];
-            CaractéristiqueDeCompte = tableauDesÉléments[2];
-
-            if (CaractéristiqueDeCompte == "conjoint")
-            {
-                NuméroClients[1] = tableauDesÉléments[3];
-                indice++;
-            }
-            
-            NuméroCompte = tableauDesÉléments[indice + 3];
-            StatutCompte = char.Parse(tableauDesÉléments[indice + 4]);
-            SoldeCompte = double.Parse(tableauDesÉléments[indice + 5]);
+            NuméroClients = numéroClient;
+            TypeDeCompte = typeDeCompte;
+            CaractéristiqueDeCompte = caracteristiqueDeCompte;
+            NuméroCompte = numéroCompte;
+            StatutCompte = statutCompte;
+            SoldeCompte = soldeCompte;
         }
 
         //switch (typeDeCompte)
@@ -206,7 +200,7 @@ namespace INF731_TP2
             }
             else
             {
-                return "Numéro de compte: " + NuméroCompte + ", Numéro de Client: " + NuméroClients + ", Solde du compte: " + SoldeCompte;
+                return "Numéro de compte: " + NuméroCompte + ", Numéro de Client: " + NuméroClients[0] + ", Solde du compte: " + SoldeCompte;
             }
         }
 

@@ -52,8 +52,9 @@ namespace INF731_TP2
         #region // Déclaration des constructeurs
 
         // Renvoit tout les paramètres au parent
-        public CompteChèque(string[] tableauDesÉléments) 
-            : base(tableauDesÉléments)
+        public CompteChèque(string[] numéroClient, string typeDeCompte, string caracteristiqueDeCompte,
+                            string numéroCompte, char statutCompte, double soldeCompte) 
+            : base(numéroClient, typeDeCompte, caracteristiqueDeCompte, numéroCompte, statutCompte, soldeCompte)
         {
             //if (base.tableauDesÉléments[1] != "Chèque")
             //    throw new Exception();                      /// Create a more suitable exception
@@ -83,17 +84,17 @@ namespace INF731_TP2
         {
 	        double frais;
 			if (SoldeCompte >= montant)
-		        {
-			        SoldeCompte -= montant;
-			        Console.WriteLine("Opération bien effectuée");
-                    return true;
-		        }
-		        else
-		        {
-			        // Throw new exception
-			        Console.WriteLine("Solde insuffisant");
-                    return false;
-		        }
+		    {
+			    SoldeCompte -= montant;
+			    Console.WriteLine("Opération bien effectuée");
+                return true;
+		    }
+		    else
+		    {
+			    // Throw new exception
+			    Console.WriteLine("Solde insuffisant");
+                return false;
+		    }
 
 	        if (typeTransaction == 'C')
 	        {

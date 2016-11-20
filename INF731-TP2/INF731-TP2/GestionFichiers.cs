@@ -21,16 +21,17 @@ namespace INF731_TP2
 
 
         #region Déclaration des méthodes
-        
+
         /**
         * Description: Lit une ligne csv et retourne les informations d'un client 
         * @param: string ligne (numéroClient;Nom;Prénom)
         * @retour: string[]{numéroClient,Nom,Prénom}
         */
-        private static string[] ParseClientString(string ligne)
+        private static string[] ParseCSV(string ligne)
         {
-            string[] client = ligne.Split(';');
-            return client;
+            // rajouter trim 
+            string[] tableauÉléments = ligne.Split(';');
+            return tableauÉléments;
         }
 
         /**
@@ -38,17 +39,15 @@ namespace INF731_TP2
         * @param: string cheminFichier (Fichier de clients)
         * @retour: Une liste de clients
         */
-        public static List<ClientIndividuel> loadClients(String cheminFichier)
+        public static void loadClients(Banque banque, String cheminFichier)
         {
-            // Le cheminFichier est un paramètre qui contient les deux informations ci-dessous.
-            //const string CHEMIN_SORTIE = "../../";
-            //const string nomFichier = "listeClients.txt";
-            List<ClientIndividuel> mesClients = new List<ClientIndividuel>();
+            string[] attributs;
 
-            foreach (var Ligne in File.ReadLines(cheminFichier))
-                mesClients.Add(new ClientIndividuel(ParseClientString(Ligne)));  
-
-            return mesClients;
+            foreach (var Ligne in File.ReadLines(cheminFichier, Encoding.UTF7))
+            {
+                attributs = ParseCSV(Ligne);
+                banque.AjouterClient(new ClientIndividuel(attributs[0].Trim(), attributs[1].Trim(), attributs[2].Trim()));
+            }
         }
 
         /**
@@ -57,27 +56,56 @@ namespace INF731_TP2
         * @param: Banque        (Permet de référencer les objets, méthodes qui existent au niveau de Banque)
         * @retour: Compte       (Retourne un compte)
         */
-        private static Compte ParseCompteString(string ligne)
+        private static Compte CréerCompte(string[] tableauDesÉléments)
         {
-            Compte compte;
+            string[] numéroClients = new string[2];
             string typeDeCompte;
-            string[] tableauDesÉléments = ligne.Split(';');
+            string caractéristiqueDeCompte;
+            string numéroCompte;
+            char statutCompte;
+            double soldeCompte;
 
-            typeDeCompte = tableauDesÉléments[1];
+            int indice = 0;
+
+            numéroClients[0] = tableauDesÉléments[0];
+            typeDeCompte = tableauDesÉléments[1].ToLower();
+            caractéristiqueDeCompte = tableauDesÉléments[2].ToLower();
+
+            if (caractéristiqueDeCompte == "conjoint")
+            {
+                numéroClients[1] = tableauDesÉléments[3];
+                indice++;
+            }
 
             switch (typeDeCompte)
             {
-                case "Chèque":
-                    return compte = new CompteChèque(tableauDesÉléments);
-                    break;
-                    //case "Épargne":
-                    //    return compte = new CompteSaving(tableauDesÉléments);
-                    //    break;
-                    //case "Flexible":
-                    //    return compte = new CompteFlexible(tableauDesÉléments);
-                    //    break;
+                case "chèque":
+                    numéroCompte = tableauDesÉléments[indice + 3];
+                    statutCompte = char.Parse(tableauDesÉléments[indice + 4].ToUpper());
+                    soldeCompte = double.Parse(tableauDesÉléments[indice + 5]);
+
+                    return new CompteChèque(numéroClients, typeDeCompte, caractéristiqueDeCompte, numéroCompte, statutCompte, soldeCompte);
+
+                //case "épargne":
+                //    numéroCompte = tableauDesÉléments[indice + 3];
+                //    statutCompte = char.Parse(tableauDesÉléments[indice + 4]).ToUpper();
+                //    soldeCompte = double.Parse(tableauDesÉléments[indice + 5]);
+
+                //    return new CompteÉpargne(tableauDesÉléments);
+
+                //case "flexible":
+                //    string modeFacturation = tableauDesÉléments[indice + 3].ToLower();
+                //    numéroCompte = tableauDesÉléments[indice + 4];
+                //    statutCompte = char.Parse(tableauDesÉléments[indice + 5].ToUpper());
+                //    soldeCompte = double.Parse(tableauDesÉléments[indice + 6]);
+                //    double montantMarge = double.Parse(tableauDesÉléments[indice + 7]);
+                //    double soldeMarge = double.Parse(tableauDesÉléments[indice + 8]);
+
+                //    return new CompteFlexible(tableauDesÉléments);
+
+                default:
+                    return new CompteChèque(new string[2] { "Default", "Default" }, "Default", "Default", "Default", 'E', 0);
             }
-            return compte = new CompteChèque(tableauDesÉléments);
         }
 
         /**
@@ -85,14 +113,15 @@ namespace INF731_TP2
         * @param: string cheminFichier (Fichier de clients)
         * @retour: Une liste de comptes
         */
-        public static List<Compte> loadComptes(String cheminFichier)
+        public static void loadComptes(Banque banque, String cheminFichier)
         {
-            List<Compte> mesComptes = new List<Compte>();
+            string[] attributs;
 
-            foreach (var Ligne in File.ReadLines(cheminFichier))
-                mesComptes.Add(ParseCompteString(Ligne));
-
-            return mesComptes;
+            foreach (var Ligne in File.ReadLines(cheminFichier, Encoding.UTF7))
+            {
+                attributs = ParseCSV(Ligne);
+                banque.AjouterCompte(CréerCompte(attributs));
+            }
         }
 
 

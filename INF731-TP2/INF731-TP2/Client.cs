@@ -41,7 +41,6 @@ namespace INF731_TP2
 
         #region // Déclaration des méthodes
 
-
         // Pourquoi on a besoin de AfficherClient () si on a ToString?
         /*
         * Méthode: Afficher()

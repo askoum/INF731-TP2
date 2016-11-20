@@ -45,11 +45,11 @@ namespace INF731_TP2
 
         // Déclaration des constructeurs de class
 
-        public ClientIndividuel(string[] client)
-            : base(client[0])
+        public ClientIndividuel(string numéroClient, string nom, string prénom)
+            : base(numéroClient)
         {
-            NomClient = client[1];
-            PrénomClient = client[2];
+            NomClient = nom;
+            PrénomClient = prénom;
         }
 
 

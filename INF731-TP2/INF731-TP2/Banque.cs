@@ -1,93 +1,99 @@
 ﻿
-//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
-///**
-// * 
-// */
-//namespace INF731_TP2
-//{
-//    public class Banque
-//    {
-//        #region // Déclaration des attributs
+/**
+ * 
+ */
+namespace INF731_TP2
+{
+    public class Banque
+    {
+        #region // Déclaration des attributs
 
-//        private static string nomBanque;
-//        List<Client> ListeDeClients { get; set; } // Propriété automatique
-//        List<Compte> ListeDeComptes { get; set; } // Propriété automatique
+        private string nomBanque;
+        public List<Client> ListeDeClients { get; set; } // Propriété automatique
+        public List<Compte> ListeDeComptes { get; set; } // Propriété automatique
 
-//        #endregion
-
-
-//        #region // Déclaration des propriétés
-
-//        public string NomBanque
-//        {
-//            get { return nomBanque; }
-//            private set { nomBanque = value; }
-//        }
-
-//        public Client this[int indice]
-//        {
-//            get { return ListeDeClients[indice]; }
-//            private set { ListeDeClients[indice] = value; }
-//        }
-
-//        public Compte this[int indice]
-//        {
-//            get { return ListeDeComptes[indice]; }
-//            private set { ListeDeComptes[indice] = value; }
-//        }
-
-//        #endregion
+        #endregion
 
 
-//        #region // Déclaration des constructeurs de class
+        #region // Déclaration des propriétés
 
-//        public Banque(string nomBanque, string fichierClient, string fichierCompte)
-//        {
-//            NomBanque = nomBanque;
-//            List<Client> ListeDeClients = new List<Client>(GestionFichiers.loadClients(fichierClient));
-//            List<Compte> ListeDeComptes = new List<Compte>(GestionFichiers.loadComptes(fichierCompte));
-//        }
+        public string NomBanque
+        {
+            get { return nomBanque; }
+            private set { nomBanque = value; }
+        }
 
-//        #endregion
+        #endregion
 
 
-//        #region // Déclaration des méthodes
+        #region // Déclaration des constructeurs de class
 
-//        /**
-//         * 
-//         */
-//        //public void CréerClient(string numéroClient, string nom, string prénom)
-//        //{
-//        //    ListeDeClients.Add(new ClientIndividuel("10001", "LaPrairie", "George"));
-//        //}
+        public Banque(string nomBanque)
+        {
+            NomBanque = nomBanque;
+            ListeDeClients = new List<Client>();
+            ListeDeComptes = new List<Compte>();
+        }
 
-//        /**
-//         * 
-//         */
-//        public void CréerCompte()
-//        {
-//            // TODO implement here
-//        }
+        #endregion
 
-//        /**
-//         * 
-//         */
-//        public void FermerCompte()
-//        {
-//            // TODO implement here
-//        }
 
-//        // Retourner un clien en fonction de son numéro de client
-//        public Client TrouverClient(string numéroClient)
-//        {
-//            return ListeClients.Find(client => client.NuméroClient == numéroClient);
+        #region // Déclaration des méthodes
 
-//        }
+        /**
+         * 
+         */
+        public void AjouterClient(Client client)
+        {
+            ListeDeClients.Add(client);
+        }
 
-//        #endregion
-//    }
-//}
+        public void AjouterCompte(Compte compte)
+        {
+            ListeDeComptes.Add(compte);
+        }
+
+        /**
+         * 
+         */
+        public void FermerCompte()
+        {
+            // TODO implement here
+        }
+
+        /**
+         * 
+         */
+        //// Retourner un client en fonction de son numéro de client
+        //public Client TrouverClient(string numéroClient)
+        //{
+        //    return ListeDeClients.Find(client => client.NuméroClient == numéroClient);
+
+        //}
+
+        ///**
+        // * 
+        // */
+        //// Retourner la liste des comptes pour un client
+        //public List<Compte> TrouverLesComptes(Client clientreçus)
+        //{
+        //    return ListeDeComptes.FindAll(compte => compte.ListeDeClients == clientreçus.NuméroClient).ToList(); // Naviguer la liste de client?
+        //}
+
+        ///**
+        // * 
+        // */
+        //// Retourner la liste des comptes pour un client à partir de son numéro
+        //public List<Compte> TrouverLesComptes(string numéroClient)
+        //{
+        //    return ListeDeComptes.FindAll(compte => compte.NuméroClients == numéroClient).ToList(); // Naviguer la liste de client?
+        //}
+
+        #endregion
+    }
+}
