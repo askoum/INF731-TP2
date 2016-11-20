@@ -49,6 +49,7 @@
     <Compile Include="Client.cs" />
     <Compile Include="CompteChèque.cs" />
     <Compile Include="CompteFlexible.cs" />
+    <Compile Include="CompteÉpargne.cs" />
     <Compile Include="GestionFichiers.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

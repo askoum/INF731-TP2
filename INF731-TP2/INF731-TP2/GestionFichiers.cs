@@ -43,7 +43,7 @@ namespace INF731_TP2
         {
             string[] attributs;
 
-            foreach (var Ligne in File.ReadLines(cheminFichier, Encoding.UTF7))
+            foreach (var Ligne in File.ReadLines(cheminFichier, Encoding.UTF7).Where(Ligne => Ligne != ""))
             {
                 attributs = ParseCSV(Ligne);
                 banque.AjouterClient(new ClientIndividuel(attributs[0].Trim(), attributs[1].Trim(), attributs[2].Trim()));
@@ -86,22 +86,22 @@ namespace INF731_TP2
 
                     return new CompteChèque(numéroClients, typeDeCompte, caractéristiqueDeCompte, numéroCompte, statutCompte, soldeCompte);
 
-                //case "épargne":
-                //    numéroCompte = tableauDesÉléments[indice + 3];
-                //    statutCompte = char.Parse(tableauDesÉléments[indice + 4]).ToUpper();
-                //    soldeCompte = double.Parse(tableauDesÉléments[indice + 5]);
+                case "épargne":
+                    numéroCompte = tableauDesÉléments[indice + 3];
+                    statutCompte = char.Parse(tableauDesÉléments[indice + 4].ToUpper());
+                    soldeCompte = double.Parse(tableauDesÉléments[indice + 5]);
 
-                //    return new CompteÉpargne(tableauDesÉléments);
+                    return new CompteÉpargne(numéroClients, typeDeCompte, caractéristiqueDeCompte, numéroCompte, statutCompte, soldeCompte);
 
-                //case "flexible":
-                //    string modeFacturation = tableauDesÉléments[indice + 3].ToLower();
-                //    numéroCompte = tableauDesÉléments[indice + 4];
-                //    statutCompte = char.Parse(tableauDesÉléments[indice + 5].ToUpper());
-                //    soldeCompte = double.Parse(tableauDesÉléments[indice + 6]);
-                //    double montantMarge = double.Parse(tableauDesÉléments[indice + 7]);
-                //    double soldeMarge = double.Parse(tableauDesÉléments[indice + 8]);
+                case "flexible":
+                    string modeFacturation = tableauDesÉléments[indice + 3].ToLower();
+                    numéroCompte = tableauDesÉléments[indice + 4];
+                    statutCompte = char.Parse(tableauDesÉléments[indice + 5].ToUpper());
+                    soldeCompte = double.Parse(tableauDesÉléments[indice + 6]);
+                    double montantMarge = double.Parse(tableauDesÉléments[indice + 7]);
+                    double soldeMarge = double.Parse(tableauDesÉléments[indice + 8]);
 
-                //    return new CompteFlexible(tableauDesÉléments);
+                    return new CompteFlexible(numéroClients, typeDeCompte, caractéristiqueDeCompte, numéroCompte, statutCompte, soldeCompte, modeFacturation, montantMarge, soldeMarge);
 
                 default:
                     return new CompteChèque(new string[2] { "Default", "Default" }, "Default", "Default", "Default", 'E', 0);
@@ -117,7 +117,7 @@ namespace INF731_TP2
         {
             string[] attributs;
 
-            foreach (var Ligne in File.ReadLines(cheminFichier, Encoding.UTF7))
+            foreach (var Ligne in File.ReadLines(cheminFichier, Encoding.UTF7).Where(Ligne => Ligne != ""))
             {
                 attributs = ParseCSV(Ligne);
                 banque.AjouterCompte(CréerCompte(attributs));

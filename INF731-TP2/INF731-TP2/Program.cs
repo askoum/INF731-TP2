@@ -22,7 +22,8 @@ namespace INF731_TP2
             }
 
 
-            string FichierComptes = "../../ListeDeComptes.txt";
+            //string FichierComptes = "../../ListeDeComptes.txt";
+            string FichierComptes = "../../fichierTestCompte.txt"; 
             GestionFichiers.loadComptes(Tangerine, FichierComptes);
             foreach (Compte c in Tangerine.ListeDeComptes)
             {

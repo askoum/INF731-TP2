@@ -12,7 +12,8 @@ namespace INF731_TP2
         private const double FRAIS_PAR_CHÈQUE = 0.50;
 		private const double MINIMUM_SOLDE = 1000;
 		private const double TAUX_INTÉRÊT_ANNUEL = 0.5;
-		private double soldePlusBas;
+
+        private double soldePlusBas;
 		private double leTauxIntérêtAnnuel;
 
         #endregion
@@ -71,60 +72,123 @@ namespace INF731_TP2
         */
         public override bool Déposer(double montant)
         {
-            base.SoldeCompte += montant;
-            Console.WriteLine("Opération bien effectuée");
-            return true;
+            if (EstActif())
+            {
+                base.SoldeCompte += montant;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         /*
-         * Méthode: Retirer
+        * Méthode: RetirerComptoir
+        * @param double montant
+        */
+        public override bool RetirerComptoir(double montant)
+        {
+            if (EstActif())
+            {
+                //double frais;
+                if (SoldeCompte >= montant)
+                {
+                    SoldeCompte -= montant;
+                    return true;
+                }
+                else
+                {
+                    // Throw new exception
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /*
+         * Méthode: RetirerGuichetAutomatique
          * @param double montant
          */
-        public override bool Retirer(double montant, char typeTransaction)
+        public override bool RetirerGuichetAutomatique(double montant)
         {
-	        double frais;
-			if (SoldeCompte >= montant)
-		    {
-			    SoldeCompte -= montant;
-			    Console.WriteLine("Opération bien effectuée");
-                return true;
-		    }
-		    else
-		    {
-			    // Throw new exception
-			    Console.WriteLine("Solde insuffisant");
+            if (EstActif())
+            {
+                //double frais;
+                if (montant <= MAX_RETRAIT_GA)
+                {
+                    if (SoldeCompte >= montant)
+                    {
+                        SoldeCompte -= montant;
+                        return true;
+                    }
+                    else
+                    {
+                        // Throw new exception
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
                 return false;
-		    }
-
-	        if (typeTransaction == 'C')
-	        {
-		        if (SoldeCompte < MINIMUM_SOLDE)
-		        {
-			        frais = montant + FRAIS_PAR_CHÈQUE;
-			        SoldeCompte -= frais;
-                    return true;
-		        }
-	        }
+            }
         }
 
         /*
-        * Méthode: AjouterIntérêt
-        * @param 
-        */
-        public override bool AjouterIntérêt()
+         * Méthode: RetirerChèque
+         * @param double montant
+         */
+        public override bool RetirerChèque(double montant)
         {
-            return true; // To implement
+            if (EstActif())
+            {
+                //double frais;
+                if (SoldeCompte >= montant)
+                {
+                    if (SoldeCompte < MINIMUM_SOLDE)
+                    {
+                        montant += FRAIS_PAR_CHÈQUE;
+                    }
+
+                    SoldeCompte -= montant;
+                    return true;
+                }
+                else
+                {
+                    // Throw new exception
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
         }
             
         /*
          * Méthode: AjouterIntérêtsAnnuel
          * @param 
          */
-        public bool AjouterIntérêtsAnnuel()
+        public bool AjouterIntérêtl()
         {
-	        double intérêts = soldePlusBas * TAUX_INTÉRÊT_ANNUEL;
-	        soldePlusBas += intérêts;
-            return true;
+            if (EstActif())
+            {
+                double intérêts = soldePlusBas * TAUX_INTÉRÊT_ANNUEL;
+                SoldeCompte += intérêts;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         /*
@@ -133,7 +197,15 @@ namespace INF731_TP2
          */
         public override double AfficherSolde()
         {
-            return SoldeCompte;
+            if (EstActif())
+            {
+                return SoldeCompte;
+            }
+            else
+            {
+                throw new Exception();   // To implement
+            }
+            
         }
 
         /*
@@ -144,13 +216,6 @@ namespace INF731_TP2
         {
             base.Afficher();
         }
-
-        /*
-        * Méthode: ToString
-        * @param
-        */
-
-
         
         #endregion
     }

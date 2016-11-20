@@ -69,30 +69,30 @@ namespace INF731_TP2
         /**
          * 
          */
-        //// Retourner un client en fonction de son numéro de client
-        //public Client TrouverClient(string numéroClient)
-        //{
-        //    return ListeDeClients.Find(client => client.NuméroClient == numéroClient);
+        // Retourner un client en fonction de son numéro de client
+        public Client TrouverClient(string numéroClient)
+        {
+            return ListeDeClients.Find(client => client.NuméroClient == numéroClient);
 
-        //}
+        }
 
-        ///**
-        // * 
-        // */
-        //// Retourner la liste des comptes pour un client
-        //public List<Compte> TrouverLesComptes(Client clientreçus)
-        //{
-        //    return ListeDeComptes.FindAll(compte => compte.ListeDeClients == clientreçus.NuméroClient).ToList(); // Naviguer la liste de client?
-        //}
+        /**
+         * 
+         */
+        // Retourner la liste des comptes pour un client
+        public List<Compte> TrouverLesComptes(Client clientreçus)
+        {
+            return ListeDeComptes.FindAll(compte => compte.NuméroClients == clientreçus.NuméroClient).ToList(); // Naviguer la liste de client?
+        }
 
-        ///**
-        // * 
-        // */
-        //// Retourner la liste des comptes pour un client à partir de son numéro
-        //public List<Compte> TrouverLesComptes(string numéroClient)
-        //{
-        //    return ListeDeComptes.FindAll(compte => compte.NuméroClients == numéroClient).ToList(); // Naviguer la liste de client?
-        //}
+        /**
+         * 
+         */
+        // Retourner la liste des comptes pour un client à partir de son numéro
+        public List<Compte> TrouverLesComptes(string numéroClient)
+        {
+            return ListeDeComptes.FindAll(compte => compte.NuméroClients == numéroClient).ToList(); // Naviguer la liste de client?
+        }
 
         #endregion
     }

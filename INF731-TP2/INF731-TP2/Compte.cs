@@ -15,6 +15,7 @@ namespace INF731_TP2
 
         const char CODE_ACTIF = 'A';
         const char CODE_INACTIF = 'I';
+        private const double MAX_RETRAIT_GA = 500;
 
         private string[] NuméroClients = new string[2];
         private string typeDeCompte;
@@ -118,28 +119,7 @@ namespace INF731_TP2
             StatutCompte = statutCompte;
             SoldeCompte = soldeCompte;
         }
-
-        //switch (typeDeCompte)
-        //{
-        //    case "Chèque":
-        //        numéroCompte = tableauDesÉléments[i + 3];
-        //        statutCompte = char.Parse(tableauDesÉléments[i + 4]);
-        //        soldeCompte = double.Parse(tableauDesÉléments[i + 5]);
-        //        break;
-        //    case "flexible":
-        //        modeFacturation = tableauDesÉléments[i + 3];
-        //        numéroCompte = tableauDesÉléments[i + 4];
-        //        statutCompte = char.Parse(tableauDesÉléments[i + 5]);
-        //        soldeCompte = double.Parse(tableauDesÉléments[i + 6]);
-        //        montantMarge = double.Parse(tableauDesÉléments[i + 7]);
-        //        soldeMarge = double.Parse(tableauDesÉléments[i + 8]);
-        //        break;
-        //    case "saving":
-        //        numéroCompte = tableauDesÉléments[i + 3];
-        //        statutCompte = char.Parse(tableauDesÉléments[i + 4]);
-        //        soldeCompte = double.Parse(tableauDesÉléments[i + 5]);
-        //        break;
-        //}
+        
         #endregion
 
 
@@ -211,15 +191,34 @@ namespace INF731_TP2
         */
         public virtual bool Déposer(double montant)
         {
-            return true; // To implement
+            return false; // To implement
         }
 
         /**
         * @param montant
         */
-        public virtual bool Retirer(double montant, char typeTransaction)
+        public virtual bool RetirerComptoir(double montant)
         {
-            return true; // To implement
+            return false; // To implement
+        }
+
+        /**
+        * @param montant
+        */
+        public virtual bool RetirerGuichetAutomatique(double montant)
+        {
+            // Le retrait doit être un multiple de 5 modulo 0 ou (5 % 0)
+            // Le retrait est d'un maximum de 500$
+
+            return false; // To implement
+        }
+
+        /**
+        * @param montant
+        */
+        public virtual bool RetirerChèque(double montant)
+        {
+            return false; // To implement
         }
 
         /**
@@ -228,7 +227,7 @@ namespace INF731_TP2
         */
         public virtual bool AjouterIntérêt()
         {
-            return true; // To implement
+            return false; // To implement
         }
 
         /**

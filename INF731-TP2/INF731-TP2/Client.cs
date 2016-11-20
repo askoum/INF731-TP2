@@ -20,10 +20,10 @@ namespace INF731_TP2
 
         #region // Déclaration des propriétés
 
-        private string NuméroClient
+        public string NuméroClient
         {
             get { return numéroClient; }
-            set { numéroClient = value; }
+            private set { numéroClient = value; }
         }
 
         #endregion
