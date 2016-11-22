@@ -9,8 +9,10 @@ using System.Text;
  */
 namespace INF731_TP2
 {
+    #region // Déclaration des classes d'exception
     public class listeClientsVide : Exception { }
     public class listeComptesVide : Exception { }
+    #endregion
 
     public static class GestionFichiers
     {
@@ -151,32 +153,36 @@ namespace INF731_TP2
         /**
          * 
          */
-        static void LireFichierTransaction()
+        static void LireFichierTransaction(String cheminFichier)
         {
+            File.AppendAllText(cheminFichier, "sometext");  // Write Text and close file (similar to Console.WriteLine on the logic)
             // TODO implement here
         }
 
         /**
          * 
          */
-        static void ÉcrireJournalTransaction()
+        static void ÉcrireJournalTransaction(String cheminFichier)
         {
+            File.AppendAllText(cheminFichier, "sometext");  // Write Text and close file (similar to Console.WriteLine on the logic)
             // TODO implement here
         }
 
         /**
          * 
          */
-        static void EcrireJournalClient()
+        static void EcrireJournalClient(String cheminFichier)
         {
+            File.AppendAllText(cheminFichier, "sometext");  // Write Text and close file (similar to Console.WriteLine on the logic)
             // TODO implement here
         }
 
         /**
          * 
          */
-        static void EcrireJournalCompte()
+        static void EcrireJournalCompte(String cheminFichier)
         {
+            File.AppendAllText(cheminFichier, "sometext");  // Write Text and close file (similar to Console.WriteLine on the logic)
             // TODO implement here
         }
         #endregion
