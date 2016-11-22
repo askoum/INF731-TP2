@@ -15,7 +15,8 @@ namespace INF731_TP2
             Banque Tangerine = new Banque("Tangerine");
 
             string FichierClient = "../../ListeDeClients.txt";
-            GestionFichiers.loadClients(Tangerine, FichierClient);
+            foreach (Client client in (GestionFichiers.loadClients(FichierClient)))
+                Tangerine.AjouterClient(client);
             foreach (Client c in Tangerine.ListeDeClients)
             {
                 c.Afficher();
@@ -23,8 +24,9 @@ namespace INF731_TP2
 
 
             //string FichierComptes = "../../ListeDeComptes.txt";
-            string FichierComptes = "../../fichierTestCompte.txt"; 
-            GestionFichiers.loadComptes(Tangerine, FichierComptes);
+            string FichierComptes = "../../fichierTestCompte.txt";
+            foreach ( Compte compte in (GestionFichiers.loadComptes(FichierComptes)) )
+                Tangerine.AjouterCompte(compte);
             foreach (Compte c in Tangerine.ListeDeComptes)
             {
                 c.Afficher();

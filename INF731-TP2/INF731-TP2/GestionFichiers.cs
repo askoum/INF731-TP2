@@ -39,15 +39,17 @@ namespace INF731_TP2
         * @param: string cheminFichier (Fichier de clients)
         * @retour: Une liste de clients
         */
-        public static void loadClients(Banque banque, String cheminFichier)
+        public static List<Client> loadClients(String cheminFichier)
         {
             string[] attributs;
+            List<Client> listClients = new List<Client>();
 
             foreach (var Ligne in File.ReadLines(cheminFichier, Encoding.UTF7).Where(Ligne => Ligne != ""))
             {
                 attributs = ParseCSV(Ligne);
-                banque.AjouterClient(new ClientIndividuel(attributs[0].Trim(), attributs[1].Trim(), attributs[2].Trim()));
+                listClients.Add(new ClientIndividuel(attributs[0].Trim(), attributs[1].Trim(), attributs[2].Trim()));
             }
+            return listClients;
         }
 
         /**
@@ -113,15 +115,17 @@ namespace INF731_TP2
         * @param: string cheminFichier (Fichier de clients)
         * @retour: Une liste de comptes
         */
-        public static void loadComptes(Banque banque, String cheminFichier)
+        public static List<Compte> loadComptes(String cheminFichier)
         {
             string[] attributs;
+            List<Compte> listeComptes = new List<Compte>();
 
             foreach (var Ligne in File.ReadLines(cheminFichier, Encoding.UTF7).Where(Ligne => Ligne != ""))
             {
                 attributs = ParseCSV(Ligne);
-                banque.AjouterCompte(CréerCompte(attributs));
+                listeComptes.Add(CréerCompte(attributs));
             }
+            return listeComptes;
         }
 
 
