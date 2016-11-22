@@ -9,9 +9,9 @@ namespace INF731_TP2
 	{
         #region // Déclaration des attributs
 
-        private const double FRAIS_PAR_CHÈQUE = 0.50;
-		private const double MINIMUM_SOLDE = 1000;
-		private const double TAUX_INTÉRÊT_ANNUEL = 0.5;
+        public const double FRAIS_PAR_CHÈQUE = 0.50;
+        public const double MINIMUM_SOLDE = 1000;
+        public const double TAUX_INTÉRÊT_ANNUEL = 0.5;
 
         private double soldePlusBas;
 		private double leTauxIntérêtAnnuel;
@@ -54,11 +54,13 @@ namespace INF731_TP2
 
         // Renvoit tout les paramètres au parent
         public CompteChèque(string[] numéroClient, string typeDeCompte, string caracteristiqueDeCompte,
-                            string numéroCompte, char statutCompte, double soldeCompte) 
+                            string numéroCompte, char statutCompte, double soldeCompte)
             : base(numéroClient, typeDeCompte, caracteristiqueDeCompte, numéroCompte, statutCompte, soldeCompte)
         {
-            //if (base.tableauDesÉléments[1] != "Chèque")
-            //    throw new Exception();                      /// Create a more suitable exception
+            if (typeDeCompte != "chèque")
+            {
+                throw new TypeCompteInvalide();
+            }
         }
 
         #endregion
@@ -215,6 +217,7 @@ namespace INF731_TP2
         public override void Afficher()
         {
             base.Afficher();
+            Console.WriteLine();
         }
         
         #endregion

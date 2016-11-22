@@ -9,6 +9,9 @@ using System.Text;
  */
 namespace INF731_TP2
 {
+    public class listeClientsVide : Exception { }
+    public class listeComptesVide : Exception { }
+
     public static class GestionFichiers
     {
         #region Déclaration des attributs
@@ -42,14 +45,22 @@ namespace INF731_TP2
         public static List<Client> loadClients(String cheminFichier)
         {
             string[] attributs;
-            List<Client> listClients = new List<Client>();
+            List<Client> listeClients = new List<Client>();
 
             foreach (var Ligne in File.ReadLines(cheminFichier, Encoding.UTF7).Where(Ligne => Ligne != ""))
             {
                 attributs = ParseCSV(Ligne);
-                listClients.Add(new ClientIndividuel(attributs[0].Trim(), attributs[1].Trim(), attributs[2].Trim()));
+                listeClients.Add(new ClientIndividuel(attributs[0].Trim(), attributs[1].Trim(), attributs[2].Trim()));
             }
-            return listClients;
+
+            if (listeClients.Count == 0)
+            {
+                throw new listeClientsVide();
+            }
+            else
+            {
+                return listeClients;
+            }   
         }
 
         /**
@@ -125,7 +136,15 @@ namespace INF731_TP2
                 attributs = ParseCSV(Ligne);
                 listeComptes.Add(CréerCompte(attributs));
             }
-            return listeComptes;
+
+            if (listeComptes.Count == 0)
+            {
+                throw new listeComptesVide();
+            }
+            else
+            {
+                return listeComptes;
+            }
         }
 
 

@@ -11,39 +11,17 @@ namespace INF731_TP2
 {
     public class ClientIndividuel : Client
     {
-        // Déclaration des attributs
-        private string nomClient;
-        private string prénomClient;
+        #region // Déclaration des attributs
+        public string NomClient { get; private set; }
+        public string PrénomClient { get; private set; }
+        #endregion
 
 
-        // Déclaration des propriétés
-
-        private string NomClient
-        {
-            get
-            {
-                return nomClient;
-            }
-            set
-            {
-                nomClient = value;
-            }
-        }
-
-        private string PrénomClient
-        {
-            get
-            {
-                return prénomClient;
-            }
-            set
-            {
-                prénomClient = value;
-            }
-        }
+        #region // Déclaration des propriétés
+        #endregion
 
 
-        // Déclaration des constructeurs de class
+        #region // Déclaration des constructeurs de class
 
         public ClientIndividuel(string numéroClient, string nom, string prénom)
             : base(numéroClient)
@@ -52,10 +30,11 @@ namespace INF731_TP2
             PrénomClient = prénom;
         }
 
+        #endregion
 
-        // Déclaration des méthodes
 
-        // J'essaye d'implémenter une méthode Afficher utilisant le ToString pour qu'on puisse utiliser la méthode Afficher et avoir la possibilité référer directement            à l'objet pour afficher ses Attributs. (Olivier)
+        #region // Déclaration des méthodes
+      
         /*
         * Méthode: Afficher()
         * Description: Affiche NuméroClient[EOL] Nom, Prénom
@@ -63,12 +42,9 @@ namespace INF731_TP2
         public override void Afficher()
         {
             base.Afficher();
-            Console.WriteLine(ToString());
+            Console.WriteLine(NomClient + ", " + PrénomClient);
         }
 
-        public override string ToString()
-        {
-            return NomClient + ", " + PrénomClient;
-        }
+        #endregion
     }
 }

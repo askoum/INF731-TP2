@@ -9,22 +9,32 @@ using System.Text;
  */
 namespace INF731_TP2
 {
+    #region // Déclaration des classes d'exception
+    public class TypeCompteInvalide : Exception { }
+    public class CaractéristiqueCompteInvalide : Exception { }
+    public class StatutCompteInvalide : Exception { }
+
+    #endregion
+
     public abstract class Compte
     {
-        // Déclaration des Attributs
+        #region // Déclaration des Attributs
+        public static readonly string[] TypeCompteValide = { "chèque", "épargne", "flexible" };
+        public static readonly string[] CaractéristiqueCompteValide = { "individuel", "conjoint" };
+        public static readonly char[] StatutCompteValide = { 'A', 'I' };
 
-        const char CODE_ACTIF = 'A';
-        const char CODE_INACTIF = 'I';
-        private const double MAX_RETRAIT_GA = 500;
+        public const char CODE_ACTIF = 'A';
+        public const char CODE_INACTIF = 'I';
+        public const double MAX_RETRAIT_GA = 500; 
 
-        private string[] NuméroClients = new string[2];
+        public string[] NuméroClients = new string[2];
         private string typeDeCompte;
         private string caractéristiqueDeCompte;
         private string numéroCompte;
         private char statutCompte;
         private double soldeCompte;
 
-
+        #endregion
 
 
         #region // Déclaration des propriétés
@@ -46,7 +56,14 @@ namespace INF731_TP2
 
             private set                              // Setter is private, Cannot be changed by child once created
             {
-                typeDeCompte = value;
+                if (TypeCompteValide.Contains<string>(value))
+                {
+                    typeDeCompte = value;
+                }
+                else
+                {
+                    throw new TypeCompteInvalide();
+                }
             }
         }
 
@@ -58,7 +75,14 @@ namespace INF731_TP2
             }
             private set                             // Setter is private, Cannot be changed by child once created
             {
-                caractéristiqueDeCompte = value;
+                if (CaractéristiqueCompteValide.Contains<string>(value))
+                {
+                    caractéristiqueDeCompte = value;
+                }
+                else
+                {
+                    throw new CaractéristiqueCompteInvalide();
+                }
             }
         }
 
@@ -80,7 +104,15 @@ namespace INF731_TP2
             }
             protected set                           // Setter is protected, Can be changed by child once created
             {
-                statutCompte = value;
+                if (StatutCompteValide.Contains<char>(value))
+                {
+                    statutCompte = value;
+                }
+                else
+                {
+                    throw new StatutCompteInvalide();
+                }
+                
             }
         }
 
@@ -112,12 +144,13 @@ namespace INF731_TP2
         public Compte(string[] numéroClient, string typeDeCompte, string caracteristiqueDeCompte,
         string numéroCompte, char statutCompte, double soldeCompte)
         {
-            NuméroClients = numéroClient;
-            TypeDeCompte = typeDeCompte;
-            CaractéristiqueDeCompte = caracteristiqueDeCompte;
-            NuméroCompte = numéroCompte;
-            StatutCompte = statutCompte;
-            SoldeCompte = soldeCompte;
+            
+                NuméroClients = numéroClient;
+                TypeDeCompte = typeDeCompte;
+                CaractéristiqueDeCompte = caracteristiqueDeCompte;
+                NuméroCompte = numéroCompte;
+                StatutCompte = statutCompte;
+                SoldeCompte = soldeCompte;
         }
         
         #endregion
@@ -169,7 +202,7 @@ namespace INF731_TP2
 
         public virtual void Afficher()
         {
-            Console.WriteLine(ToString());
+            Console.Write(ToString());
         }
 
         public override string ToString()
@@ -184,8 +217,10 @@ namespace INF731_TP2
             }
         }
 
+        #endregion
 
-        #region // Virtual Méthodes
+
+        #region // Déclaration des Méthodes Virtual
         /**
         * @param montant
         */
@@ -237,8 +272,6 @@ namespace INF731_TP2
         {
             return SoldeCompte; // To implement
         }
-
-        #endregion
 
         #endregion
     }

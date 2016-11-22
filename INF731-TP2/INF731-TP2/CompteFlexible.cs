@@ -8,15 +8,20 @@ using System.Text;
  */
 namespace INF731_TP2
 {
+    #region // Déclaration des classes d'exception
+    public class ModeFacturationInvalide : Exception { }
+    #endregion
+
     public class CompteFlexible : Compte
     {
         #region // Déclaration des Attributs
+        public static readonly string[] ModeFacturationValide = { "forfait", "pièce" };
 
-        private const double TAUX_INTÉRÊT_ANNUEL = 1.25;
-        private const double MARGE_CRÉDIT_MIN = 3000;
-        private const double INTÉRÊT_CRÉDIT_ANNUEL = 7.95;
-        private const double FRAIS_PIÉCE = 0.60;
-        private const double FRAIS_FORFAIT_FIXE = 9;
+        public const double TAUX_INTÉRÊT_ANNUEL = 1.25;
+        public const double MARGE_CRÉDIT_MIN = 3000;
+        public const double INTÉRÊT_CRÉDIT_ANNUEL = 7.95;
+        public const double FRAIS_PIÉCE = 0.60;
+        public const double FRAIS_FORFAIT_FIXE = 9;
 
         private double montantMarge = 3000;
         private double soldeMarge;
@@ -43,7 +48,17 @@ namespace INF731_TP2
         public string ModeFacturation
         {
             get { return modeFacturation; }
-            set { modeFacturation = value; }
+
+            set { 
+                    if (ModeFacturationValide.Contains<string>(value))
+                    {
+                        modeFacturation = value;
+                    }
+                    else
+                    {
+                        throw new ModeFacturationInvalide();
+                    }
+                }
         }
 
         public double SoldePlusBas
@@ -53,6 +68,7 @@ namespace INF731_TP2
         }
 
         #endregion
+
 
         #region // Déclaration des constructeurs
 
@@ -73,12 +89,20 @@ namespace INF731_TP2
                             string numéroCompte, char statutCompte, double soldeCompte, string modeFacturation, double montantMarge, double soldeMarge)
             : base(numéroClient, typeDeCompte, caracteristiqueDeCompte, numéroCompte, statutCompte, soldeCompte)
         {
-            ModeFacturation = modeFacturation;
-            MontantMarge = montantMarge;
-            SoldeMarge = soldeMarge;
+            if (typeDeCompte == "flexible")
+            {
+                ModeFacturation = modeFacturation;
+                MontantMarge = montantMarge;
+                SoldeMarge = soldeMarge;
+            }
+            else
+            {
+                throw new TypeCompteInvalide();
+            } 
         }
 
         #endregion
+
 
         #region // Déclaration des méthodes
 

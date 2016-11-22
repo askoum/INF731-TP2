@@ -32,6 +32,10 @@ namespace INF731_TP2
                 c.Afficher();
             }
 
+            //// Test Exception CompteTypeInvalide
+            //string[] numeroclient = { "123", "123" };
+            //Compte testCompte = new CompteChèque(numeroclient, "something","individuel","123456",'A',300.00);
+
 
             // Test des méthodes de class
             // CompteChèque.Retirer()

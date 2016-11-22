@@ -13,7 +13,7 @@ namespace INF731_TP2
     {
         #region // Déclaration des attributs 
 
-        private const double TAUX_INTÉRÊT_ANNUEL = 2.25;
+        public const double TAUX_INTÉRÊT_ANNUEL = 2.25;
         private double soldeMoyen;
 
         #endregion
@@ -36,7 +36,13 @@ namespace INF731_TP2
         #region // Déclaration des constructeurs
 
         public CompteÉpargne(string[] numéroClient, string typeDeCompte, string caracteristiqueDeCompte, string numéroCompte, char statutCompte, double soldeCompte)
-          : base(numéroClient, typeDeCompte, caracteristiqueDeCompte, numéroCompte, statutCompte, soldeCompte) { }
+          : base(numéroClient, typeDeCompte, caracteristiqueDeCompte, numéroCompte, statutCompte, soldeCompte)
+        {
+            if (typeDeCompte != "épargne")
+            {
+                throw new TypeCompteInvalide();
+            }
+        }
 
         #endregion
 

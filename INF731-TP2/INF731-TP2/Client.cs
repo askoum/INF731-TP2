@@ -12,20 +12,11 @@ namespace INF731_TP2
     {
 
         #region // Déclaration des attributs
-
-        private string numéroClient;
-
+        public string NuméroClient { get; private set; }
         #endregion
 
 
         #region // Déclaration des propriétés
-
-        public string NuméroClient
-        {
-            get { return numéroClient; }
-            private set { numéroClient = value; }
-        }
-
         #endregion
 
 
@@ -41,16 +32,19 @@ namespace INF731_TP2
 
         #region // Déclaration des méthodes
 
-        // Pourquoi on a besoin de AfficherClient () si on a ToString?
         /*
         * Méthode: Afficher()
         * Description: Affiche NuméroClient[EOL]
         */
         public virtual void Afficher()
         {
-            Console.Write(NuméroClient + " - ");
+            Console.Write(ToString());
         }
 
+        public override string ToString()
+        {            
+            return NuméroClient + " - ";
+        }
         #endregion
     }
 }
