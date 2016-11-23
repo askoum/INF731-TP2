@@ -36,6 +36,9 @@ namespace INF731_TP2
         * Méthode: Afficher()
         * Description: Affiche NuméroClient[EOL]
         */
+        /// <summary>
+        /// Affichage du numero du client
+        /// </summary>
         public virtual void Afficher()
         {
             Console.Write(ToString());
