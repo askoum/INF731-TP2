@@ -27,6 +27,7 @@ namespace INF731_TP2
         public const char CODE_INACTIF = 'I';
         public const double MAX_RETRAIT_GA = 500; 
 
+
         public string[] NuméroClients = new string[2];
         private string typeDeCompte;
         private string caractéristiqueDeCompte;
@@ -38,6 +39,7 @@ namespace INF731_TP2
 
 
         #region // Déclaration des propriétés
+        public bool EstFermer { get; private set; }
         public int Indice { get; private set; }     // Les classes enfants ont besoin de connaître l'indice du tableauÉléments du constructeur
 
         public string this[int indice]
@@ -221,25 +223,34 @@ namespace INF731_TP2
 
 
         #region // Déclaration des Méthodes Virtual
-        /**
-        * @param montant
-        */
+      
+        /// <summary>
+        /// Depot d'un montant dans un compte
+        /// </summary>
+        /// <param name="montant"></param>
+        /// <returns></returns>
         public virtual bool Déposer(double montant)
         {
             return false; // To implement
         }
 
-        /**
-        * @param montant
-        */
+
+       /// <summary>
+       /// Faire des retraits au comptoir
+       /// </summary>
+       /// <param name="montant"></param>
+       /// <returns></returns>
         public virtual bool RetirerComptoir(double montant)
         {
             return false; // To implement
         }
 
-        /**
-        * @param montant
-        */
+        
+        /// <summary>
+        /// Faire un retrait dans un guichet automatique
+        /// </summary>
+        /// <param name="montant"></param>
+        /// <returns></returns>
         public virtual bool RetirerGuichetAutomatique(double montant)
         {
             // Le retrait doit être un multiple de 5 modulo 0 ou (5 % 0)
@@ -248,26 +259,32 @@ namespace INF731_TP2
             return false; // To implement
         }
 
-        /**
-        * @param montant
-        */
+
+        /// <summary>
+        /// Faire un retrait Chèque 
+        /// </summary>
+        /// <param name="montant"></param>
+        /// <returns></returns>
         public virtual bool RetirerChèque(double montant)
         {
             return false; // To implement
         }
 
-        /**
-        * Sera implémenter dans une interface
-        * @param 
-        */
+      
+        /// <summary>
+        /// Ajouter les interets
+        /// </summary>
+        /// <returns></returns>
         public virtual bool AjouterIntérêt()
         {
             return false; // To implement
         }
 
-        /**
-        * 
-        */
+       
+        /// <summary>
+        /// Afficher le solde du compte
+        /// </summary>
+        /// <returns></returns>
         public virtual double AfficherSolde()
         {
             return SoldeCompte; // To implement

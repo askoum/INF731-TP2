@@ -16,7 +16,7 @@ namespace INF731_TP2
         private string nomBanque;
         public List<Client> ListeDeClients { get; set; } // Propriété automatique
         public List<Compte> ListeDeComptes { get; set; } // Propriété automatique
-
+     
         #endregion
 
 
@@ -33,6 +33,10 @@ namespace INF731_TP2
 
         #region // Déclaration des constructeurs de class
 
+        /// <summary>
+        /// Declaration du constructeur parametrique
+        /// </summary>
+        /// <param name="nomBanque"></param>
         public Banque(string nomBanque)
         {
             NomBanque = nomBanque;
@@ -45,9 +49,10 @@ namespace INF731_TP2
 
         #region // Déclaration des méthodes
 
-        /**
-         * 
-         */
+       /// <summary>
+       /// Ajouter un client dans la liste des clients
+       /// </summary>
+       /// <param name="client"></param>
         public void AjouterClient(Client client)
         {
             ListeDeClients.Add(client);
@@ -58,37 +63,46 @@ namespace INF731_TP2
             ListeDeComptes.Add(compte);
         }
 
-        /**
-         * 
-         */
-        public void FermerCompte()
+       /// <summary>
+       /// Fermer un compte 
+       /// </summary>
+       /// <param name="compte"></param>
+        public void FermerCompte(Compte compte)
         {
-            // TODO implement here
+            if (!compte.EstFermer())
+            {
+                compte.FermerCompte();
+            }      
         }
 
-        /**
-         * 
-         */
-        // Retourner un client en fonction de son numéro de client
+        
+     
+        /// <summary>
+        /// Retourner un client en fonction de son numéro de client
+        /// </summary>
+        /// <param name="numéroClient"></param>
+        /// <returns></returns>
         public Client TrouverClient(string numéroClient)
         {
             return ListeDeClients.Find(client => client.NuméroClient == numéroClient);
 
         }
 
-        /**
-         * 
-         */
-        // Retourner la liste des comptes pour un client
+        /// <summary>
+        /// Retourner la liste des comptes pour un client
+        /// </summary>
+        /// <param name="clientreçus"></param>
+        /// <returns></returns>
         public List<Compte> TrouverLesComptes(Client clientreçus)
         {
             return ListeDeComptes.FindAll(compte => compte.NuméroClients[0] == clientreçus.NuméroClient || compte.NuméroClients[1] == clientreçus.NuméroClient).ToList();
         }
 
-        /**
-         * 
-         */
-        // Retourner la liste des comptes pour un client à partir de son numéro
+        /// <summary>
+        /// Retourner la liste des comptes pour un client à partir de son numéro
+        /// </summary>
+        /// <param name="numéroClient"></param>
+        /// <returns></returns>
         public List<Compte> TrouverLesComptes(string numéroClient)
         {
             return ListeDeComptes.FindAll(compte => compte.NuméroClients[0] == numéroClient || compte.NuméroClients[1] == numéroClient).ToList(); // Naviguer la liste de client?

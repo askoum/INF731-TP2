@@ -5,6 +5,7 @@ using System.Text;
 
 namespace INF731_TP2
 {
+    class MontantNegatifException : ApplicationException { }
 	public class CompteChèque : Compte
 	{
         #region // Déclaration des attributs
@@ -30,8 +31,15 @@ namespace INF731_TP2
 
 	        private set
 			{
-				soldePlusBas=value;
-			}
+                if (soldePlusBas < 0)
+                {
+                    throw new MontantNegatifException();
+                }
+                else
+                {
+                    soldePlusBas = value;
+                }
+            }
 		}
 
 		public double LeTauxIntérêtAnnuel
@@ -43,9 +51,16 @@ namespace INF731_TP2
 			
 				private set
 				{
-				   leTauxIntérêtAnnuel=value;
-				}
-			}
+                if (leTauxIntérêtAnnuel < 0)
+                {
+                    throw new MontantNegatifException();
+                }
+                else
+                {
+                    leTauxIntérêtAnnuel = value;
+                }
+            }
+		}
 
         #endregion
 
@@ -179,6 +194,8 @@ namespace INF731_TP2
          * Méthode: AjouterIntérêtsAnnuel
          * @param 
          */
+
+
         public bool AjouterIntérêtl()
         {
             if (EstActif())

@@ -29,6 +29,9 @@ namespace INF731_TP2
                 Tangerine.AjouterCompte(compte);
             foreach (Compte c in Tangerine.ListeDeComptes)
             {
+                //c.Afficher();
+                c.Déposer(100000);
+                //Console.WriteLine("Solde Apres le depot de 500: ");
                 c.Afficher();
             }
 
@@ -37,8 +40,8 @@ namespace INF731_TP2
             //Compte testCompte = new CompteChèque(numeroclient, "something","individuel","123456",'A',300.00);
 
 
-            // Test des méthodes de class
-            // CompteChèque.Retirer()
+            //// Test des méthodes de class
+            //CompteChèque.Retirer(200);
         }
     }
 }
