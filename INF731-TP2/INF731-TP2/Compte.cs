@@ -39,7 +39,9 @@ namespace INF731_TP2
 
 
         #region // Déclaration des propriétés
+
         public bool EstFermer { get; private set; }
+
         public int Indice { get; private set; }     // Les classes enfants ont besoin de connaître l'indice du tableauÉléments du constructeur
 
         public string this[int indice]

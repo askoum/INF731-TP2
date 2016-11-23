@@ -198,7 +198,6 @@ namespace INF731_TP2
          * @param 
          */
 
-
         public bool AjouterIntérêtl()
         {
             if (EstActif())
