@@ -5,8 +5,11 @@ using System.Text;
 
 namespace INF731_TP2
 {
+    #region // Déclaration des classes d'exception
     class MontantNegatifException : ApplicationException { }
-	public class CompteChèque : Compte
+    #endregion
+
+    public class CompteChèque : Compte
 	{
         #region // Déclaration des attributs
 
