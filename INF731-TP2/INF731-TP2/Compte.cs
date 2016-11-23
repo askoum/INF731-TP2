@@ -39,7 +39,7 @@ namespace INF731_TP2
 
 
         #region // Déclaration des propriétés
-        public bool EstFermer { get; private set; }
+        private bool CompteFermer { get;  set; }
         public int Indice { get; private set; }     // Les classes enfants ont besoin de connaître l'indice du tableauÉléments du constructeur
 
         public string this[int indice]
@@ -200,6 +200,25 @@ namespace INF731_TP2
                 estActif = true;
             }
             return estActif;
+        }
+
+        public bool EstFermer()
+        {
+            return CompteFermer;
+        }
+
+        public bool FermerCompte()
+        {
+            if (EstFermer())
+            {
+                return false;
+            }
+           else
+            {
+                CompteFermer = true;
+                return true; 
+            }
+           
         }
 
         public virtual void Afficher()

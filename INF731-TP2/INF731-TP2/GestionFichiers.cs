@@ -26,24 +26,24 @@ namespace INF731_TP2
 
 
         #region Déclaration des méthodes
-
-        /**
-        * Description: Lit une ligne csv et retourne les informations d'un client 
-        * @param: string ligne (numéroClient;Nom;Prénom)
-        * @retour: string[]{numéroClient,Nom,Prénom}
-        */
+      
+        /// <summary>
+        /// Lit une ligne csv et retourne les informations d'un client(numéroClient;Nom;Prénom)
+        /// </summary>
+        /// <param name="ligne"></param>
+        /// <returns></returns>
         private static string[] ParseCSV(string ligne)
         {
             // rajouter trim 
             string[] tableauÉléments = ligne.Split(';');
             return tableauÉléments;
         }
-
-        /**
-        * Description: Lit un fichier et génère une liste de client 
-        * @param: string cheminFichier (Fichier de clients)
-        * @retour: Une liste de clients
-        */
+   
+        /// <summary>
+        /// Lit un fichier et génère une liste de client 
+        /// </summary>
+        /// <param name="cheminFichier"></param>
+        /// <returns></returns>
         public static List<Client> loadClients(String cheminFichier)
         {
             string[] attributs;
@@ -64,13 +64,12 @@ namespace INF731_TP2
                 return listeClients;
             }   
         }
-
-        /**
-        * Description: Lit une ligne csv et retourne les informations d'un client 
-        * @param: string ligne  ()
-        * @param: Banque        (Permet de référencer les objets, méthodes qui existent au niveau de Banque)
-        * @retour: Compte       (Retourne un compte)
-        */
+   
+        /// <summary>
+        /// Lit une ligne csv et retourne les informations d'un client 
+        /// </summary>
+        /// <param name="tableauDesÉléments"></param>
+        /// <returns></returns>
         private static Compte CréerCompte(string[] tableauDesÉléments)
         {
             string[] numéroClients = new string[2];
@@ -123,11 +122,12 @@ namespace INF731_TP2
             }
         }
 
-        /**
-        * Description: Lit un fichier et génère une liste de compte 
-        * @param: string cheminFichier (Fichier de clients)
-        * @retour: Une liste de comptes
-        */
+        
+        /// <summary>
+        /// Lit un fichier et génère une liste de compte 
+        /// </summary>
+        /// <param name="cheminFichier"></param>
+        /// <returns></returns>
         public static List<Compte> loadComptes(String cheminFichier)
         {
             string[] attributs;
@@ -150,36 +150,40 @@ namespace INF731_TP2
         }
 
 
-        /**
-         * 
-         */
+       /// <summary>
+       /// Lire le fichier de transaction
+       /// </summary>
+       /// <param name="cheminFichier"></param>
         static void LireFichierTransaction(String cheminFichier)
         {
             File.AppendAllText(cheminFichier, "sometext");  // Write Text and close file (similar to Console.WriteLine on the logic)
             // TODO implement here
         }
 
-        /**
-         * 
-         */
+       /// <summary>
+       /// Ecrire le journal de transaction
+       /// </summary>
+       /// <param name="cheminFichier"></param>
         static void ÉcrireJournalTransaction(String cheminFichier)
         {
             File.AppendAllText(cheminFichier, "sometext");  // Write Text and close file (similar to Console.WriteLine on the logic)
             // TODO implement here
         }
 
-        /**
-         * 
-         */
+       /// <summary>
+       /// Ecrire le journal de Client
+       /// </summary>
+       /// <param name="cheminFichier"></param>
         static void EcrireJournalClient(String cheminFichier)
         {
             File.AppendAllText(cheminFichier, "sometext");  // Write Text and close file (similar to Console.WriteLine on the logic)
             // TODO implement here
         }
 
-        /**
-         * 
-         */
+      /// <summary>
+      /// Ecrire dans le journal de compte
+      /// </summary>
+      /// <param name="cheminFichier"></param>
         static void EcrireJournalCompte(String cheminFichier)
         {
             File.AppendAllText(cheminFichier, "sometext");  // Write Text and close file (similar to Console.WriteLine on the logic)
@@ -188,3 +192,4 @@ namespace INF731_TP2
         #endregion
     }
 }
+ 
