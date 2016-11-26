@@ -87,6 +87,8 @@ using System.Text;
 ///             <Description> Surcharge ToString pour afficher les propriétés du compte</Description>
 ///         </méthode> 
 ///      </méthodes>
+/// </INF731-TP2>
+
 namespace INF731_TP2
 {
     #region // Déclaration des classes d'exception
