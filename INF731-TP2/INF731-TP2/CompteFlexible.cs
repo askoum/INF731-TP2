@@ -57,9 +57,10 @@ namespace INF731_TP2
     public class CompteFlexible : Compte
     {
         #region // Déclaration des Attributs
+		
         public static readonly string[] ModeFacturationValide = { FORFAIT, PIÈCE };
 
-        public const double TAUX_INTÉRÊT_ANNUEL = 1.25;
+        public const double TAUX_INTÉRÊT_ANNUEL = 0.00125;
         public const double MARGE_CRÉDIT_MIN = 3000;
         public const double INTÉRÊT_CRÉDIT_ANNUEL = 7.95;
         public const double FRAIS_PIÉCE = 0.60;
@@ -77,11 +78,14 @@ namespace INF731_TP2
 
         public double MontantMarge
         {
-
             get { return montantMarge; }
             private set { montantMarge = value; }
         }
         
+        public double MargeDisponible
+        {
+            get { return MontantMarge - SoldeMarge; }
+        }
         /// <summary>
         /// Peut contenir FORFAIT ou PIÈCE
         /// </summary>
@@ -142,24 +146,34 @@ namespace INF731_TP2
         #region // Déclaration des méthodes
 
         /// <summary>
-        /// Retourne True si compte est à découvert
+        /// Retirer un montant du solde ou de la marge du compte
         /// </summary>
-        /// <param name="montantRetrait"></param>
-        /// <param name="montantDisponible"></param>
-        /// <returns>
-        /// <return> True si le compte est en découvert </return>
-        /// <return> Flase si le compte n'est pas en découvert </return>
+        /// <param name="montant"></param>
+        /// <returns> 
+        /// <return> True si le montant a été retiré. </return>
+        /// <return> False si le montant n'a pas été retiré. </return> 
         /// </returns>
-        public bool EstDécouvert(double montantRetrait, double montantDisponible)
+        public override bool Retirer(double montant)
         {
-            if (EstActif())
+            if (montant <= SoldeCompte)
             {
-                return false; // To implement
+                if (base.Retirer(montant))
+                    return true;
+                else
+                    return false;
+            }
+            else if (montant <= (SoldeCompte + MargeDisponible))
+            {
+                if (Retirer(SoldeCompte))
+                {
+                    SoldeMarge += (montant - SoldeCompte);
+                    return true;
+                }
+                else
+                    return false;
             }
             else
-            {
                 return false;
-            }
         }
 
         /// <summary>
@@ -170,17 +184,33 @@ namespace INF731_TP2
         /// <return> True si le montant a été viré sur la marge. </return>
         /// <return> False si le montant n'a pas été viré sur la marge. </return>
         /// </returns>
-        public bool VirementMarge(double montant)  // To implement
+        public bool VirementMarge(double montant)
         {
             if (EstActif())
             {
-                
-                return true;
+                if (montant <= MargeDisponible)
+                {
+                    if (Retirer(montant))
+                    {
+                        SoldeMarge += montant;
+                        return true;
+                    }
+                    else
+                        return false;
+                }
+                else
+                {
+                    if (Retirer(MontantMarge - SoldeMarge))
+                    {
+                        SoldeMarge += (MontantMarge - SoldeMarge);
+                        return true;
+                    }
+                    else
+                        return false;
+                }
             }
             else
-            {
                 return false;
-            }
         }
 
         /// <summary>
@@ -201,6 +231,7 @@ namespace INF731_TP2
             base.Afficher();
             Console.WriteLine(", Mode de Facturation: " + ModeFacturation + ", Montant Marge: " + MontantMarge + ", Solde Marge: " + SoldeMarge + ", Solde Plus Bas: " + SoldePlusBas);
         }
+		
         #endregion
     }
 }
