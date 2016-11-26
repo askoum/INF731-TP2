@@ -51,6 +51,9 @@ using System.Text;
 ///     </méthodes>
 /// </INF731-TP2>
 
+#region // Déclaration des classes d'exception
+    public class TypeCompteMaxLimitException : ApplicationException { }
+#endregion
 namespace INF731_TP2
 {
     public class Banque
@@ -98,18 +101,49 @@ namespace INF731_TP2
         /// Ajouter un client dans la liste des clients de la banque
         /// </summary>
         /// <param name="client"></param>
-        public void AjouterClient(Client client)
+        public bool AjouterClient(Client client)
         {
-            ListeDeClients.Add(client);
+            if (TrouverClient(client.NuméroClient) == null)
+            {
+                ListeDeClients.Add(client);
+                return true;
+            }
+            else
+                return false;
         }
 
         /// <summary>
         /// Ajouter un compte dans la liste des comptes de la banque
         /// </summary>
         /// <param name="compte"></param>
-        public void AjouterCompte(Compte compte)
+        public bool AjouterCompte(Compte compte)
         {
-            ListeDeComptes.Add(compte);
+            bool RC = false;
+            foreach (Compte c in TrouverLesComptes(compte.NuméroClients[0]))
+            {
+                switch (c.CaractéristiqueDeCompte)
+                {
+                    case Compte.CONJOINT:
+                        if (c.TypeDeCompte == compte.TypeDeCompte)
+                            throw new TypeCompteMaxLimitException();
+                        else
+                        {
+                            ListeDeComptes.Add(compte);
+                            RC = true;
+                        }
+                        break;
+                    case Compte.INDIVIDUEL:
+                        if (c.TypeDeCompte == compte.TypeDeCompte)
+                            throw new TypeCompteMaxLimitException();
+                        else
+                        {
+                            ListeDeComptes.Add(compte);
+                            RC = true;
+                        }
+                        break;
+                }
+            }
+            return RC;
         }
 
         /// <summary>
