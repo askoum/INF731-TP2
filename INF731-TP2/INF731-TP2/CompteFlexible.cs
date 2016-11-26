@@ -37,14 +37,6 @@ using System.Text;
 ///             <Nom>  Afficher () </Nom>
 ///             <Description>  Affiche les informations du compte </Description>
 ///         </méthode>
-///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
-///         </méthode>
-///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
-///         </méthode>
 ///     </méthodes>
 /// </INF731-TP2>
 

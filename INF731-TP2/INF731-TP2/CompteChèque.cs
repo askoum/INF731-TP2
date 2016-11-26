@@ -25,28 +25,12 @@ using System.Text;
 ///             <Description> </Description>
 ///         </méthode>
 ///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
+///             <Nom> CalculerIntérêts () </Nom>
+///             <Description> Calcule l'intérêt basé sur le solde le plus bas à appliquer sur le compte </Description>
 ///         </méthode>
 ///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
-///         </méthode>
-///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
-///         </méthode>
-///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
-///         </méthode>
-///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
-///         </méthode>
-///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
+///             <Nom>Afficher () </Nom>
+///             <Description>  Afficher les informations de compte </Description>
 ///         </méthode>
 ///     </méthodes>
 /// </INF731-TP2>
