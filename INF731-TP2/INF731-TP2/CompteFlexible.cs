@@ -82,6 +82,10 @@ namespace INF731_TP2
             private set { montantMarge = value; }
         }
         
+        public double MargeDisponible
+        {
+            get { return MontantMarge - SoldeMarge; }
+        }
         /// <summary>
         /// Peut contenir FORFAIT ou PIÈCE
         /// </summary>
@@ -142,24 +146,34 @@ namespace INF731_TP2
         #region // Déclaration des méthodes
 
         /// <summary>
-        /// Retourne True si compte est à découvert
+        /// Retirer un montant du solde ou de la marge du compte
         /// </summary>
-        /// <param name="montantRetrait"></param>
-        /// <param name="montantDisponible"></param>
-        /// <returns>
-        /// <return> True si le compte est en découvert </return>
-        /// <return> Flase si le compte n'est pas en découvert </return>
+        /// <param name="montant"></param>
+        /// <returns> 
+        /// <return> True si le montant a été retiré. </return>
+        /// <return> False si le montant n'a pas été retiré. </return> 
         /// </returns>
-        public bool EstDécouvert(double montantRetrait, double montantDisponible)
+        public override bool Retirer(double montant)
         {
-            if (EstActif())
+            if (montant <= SoldeCompte)
             {
-                return false; // To implement
+                if (base.Retirer(montant))
+                    return true;
+                else
+                    return false;
+            }
+            else if (montant <= (SoldeCompte + MargeDisponible))
+            {
+                if (Retirer(SoldeCompte))
+                {
+                    SoldeMarge += (montant - SoldeCompte);
+                    return true;
+                }
+                else
+                    return false;
             }
             else
-            {
                 return false;
-            }
         }
 
         /// <summary>
@@ -174,7 +188,7 @@ namespace INF731_TP2
         {
             if (EstActif())
             {
-                if (montant < (MontantMarge - SoldeMarge))
+                if (montant <= MargeDisponible)
                 {
                     if (Retirer(montant))
                     {
@@ -188,7 +202,7 @@ namespace INF731_TP2
                 {
                     if (Retirer(MontantMarge - SoldeMarge))
                     {
-                        SoldeMarge += montant - (MontantMarge - SoldeMarge);
+                        SoldeMarge += (MontantMarge - SoldeMarge);
                         return true;
                     }
                     else
