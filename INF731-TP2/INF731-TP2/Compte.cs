@@ -48,6 +48,8 @@ using System.Text;
 ///             <Description> </Description>
 ///         </méthode>
 ///      </méthodes>
+/// </INF731-TP2>
+
 namespace INF731_TP2
 {
     #region // Déclaration des classes d'exception
