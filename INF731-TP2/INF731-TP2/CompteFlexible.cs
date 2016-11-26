@@ -57,9 +57,10 @@ namespace INF731_TP2
     public class CompteFlexible : Compte
     {
         #region // Déclaration des Attributs
+		
         public static readonly string[] ModeFacturationValide = { FORFAIT, PIÈCE };
 
-        public const double TAUX_INTÉRÊT_ANNUEL = 1.25;
+        public const double TAUX_INTÉRÊT_ANNUEL = 0.00125;
         public const double MARGE_CRÉDIT_MIN = 3000;
         public const double INTÉRÊT_CRÉDIT_ANNUEL = 7.95;
         public const double FRAIS_PIÉCE = 0.60;
@@ -77,7 +78,6 @@ namespace INF731_TP2
 
         public double MontantMarge
         {
-
             get { return montantMarge; }
             private set { montantMarge = value; }
         }
@@ -170,17 +170,33 @@ namespace INF731_TP2
         /// <return> True si le montant a été viré sur la marge. </return>
         /// <return> False si le montant n'a pas été viré sur la marge. </return>
         /// </returns>
-        public bool VirementMarge(double montant)  // To implement
+        public bool VirementMarge(double montant)
         {
             if (EstActif())
             {
-                
-                return true;
+                if (montant < (MontantMarge - SoldeMarge))
+                {
+                    if (Retirer(montant))
+                    {
+                        SoldeMarge += montant;
+                        return true;
+                    }
+                    else
+                        return false;
+                }
+                else
+                {
+                    if (Retirer(MontantMarge - SoldeMarge))
+                    {
+                        SoldeMarge += montant - (MontantMarge - SoldeMarge);
+                        return true;
+                    }
+                    else
+                        return false;
+                }
             }
             else
-            {
                 return false;
-            }
         }
 
         /// <summary>
@@ -201,6 +217,7 @@ namespace INF731_TP2
             base.Afficher();
             Console.WriteLine(", Mode de Facturation: " + ModeFacturation + ", Montant Marge: " + MontantMarge + ", Solde Marge: " + SoldeMarge + ", Solde Plus Bas: " + SoldePlusBas);
         }
+		
         #endregion
     }
 }

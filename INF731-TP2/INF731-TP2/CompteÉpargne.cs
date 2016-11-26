@@ -103,7 +103,7 @@ namespace INF731_TP2
         /// </summary>
         /// <param name="montant"></param>
         /// <returns> TransactionTypeDeCompteInvalideException </returns>
-        public override bool DéposerAuGuichet(double montant)
+        public override bool DéposerAuGuichetAutomatique(double montant)
         {
             throw new TransactionTypeDeCompteInvalideException();
         }
