@@ -67,9 +67,12 @@ namespace INF731_TP2
 
             Console.WriteLine("Liste des clients");
             Console.WriteLine();
-            string FichierClient = "../../ListeDeClients.txt";
+            string FichierClient = "ListeDeClients.txt";
             foreach (Client client in (GestionFichiers.loadClients(FichierClient)))
-                Tangerine.AjouterClient(client);
+                if (Tangerine.AjouterClient(client))
+                    Console.WriteLine("Client {0} Ajouté", client);
+                else
+                    Console.WriteLine("ERREUR: Client {0} existe déjà", client);
             foreach (Client c in Tangerine.ListeDeClients)
             {
                 c.Afficher();
@@ -80,10 +83,13 @@ namespace INF731_TP2
             Console.WriteLine();
 
             //string FichierComptes = "../../ListeDeComptes.txt";
-            string FichierComptes = "../../fichierTestCompte.txt";
+            string FichierComptes = "ListeDeComptes.txt";
 
             foreach (Compte compte in (GestionFichiers.loadComptes(FichierComptes)))
-                Tangerine.AjouterCompte(compte);
+                if (Tangerine.AjouterCompte(compte))
+                    Console.WriteLine("Compte {0} Ajouté", compte);
+                else
+                    Console.WriteLine("ERREUR: Compte {0} existe déjà", compte);
             foreach (Compte c in Tangerine.ListeDeComptes)
             {
                 //c.Afficher();
@@ -92,17 +98,17 @@ namespace INF731_TP2
                 c.Afficher();
             }
 
-            Console.WriteLine();
-            Console.WriteLine("Liste des Transactions");
-            Console.WriteLine();
+            //Console.WriteLine();
+            //Console.WriteLine("Liste des Transactions");
+            //Console.WriteLine();
 
-            string FichierTransaction = "../../Transactions.txt";
-            foreach (Transaction transaction in (GestionFichiers.ChargerTransactions(FichierTransaction)))
-                Tangerine.AjouterTransaction(transaction);
-            foreach (Transaction transaction in Tangerine.ListeTransactions)
-            {
-                transaction.Afficher();
-            }
+            //string FichierTransaction = "ListeDeTransactions.txt";
+            //foreach (Transaction transaction in (GestionFichiers.ChargerTransactions(FichierTransaction)))
+            //    Tangerine.AjouterTransaction(transaction);
+            //foreach (Transaction transaction in Tangerine.ListeTransactions)
+            //{
+            //    transaction.Afficher();
+            //}
 
             Console.WriteLine();
             Console.WriteLine("Résultats après Transactions");

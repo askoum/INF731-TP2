@@ -118,32 +118,16 @@ namespace INF731_TP2
         /// <param name="compte"></param>
         public bool AjouterCompte(Compte compte)
         {
-            bool RC = false;
             foreach (Compte c in TrouverLesComptes(compte.NuméroClients[0]))
             {
-                switch (c.CaractéristiqueDeCompte)
+                if (c.CaractéristiqueDeCompte == compte.CaractéristiqueDeCompte)
                 {
-                    case Compte.CONJOINT:
-                        if (c.TypeDeCompte == compte.TypeDeCompte)
-                            throw new TypeCompteMaxLimitException();
-                        else
-                        {
-                            ListeDeComptes.Add(compte);
-                            RC = true;
-                        }
-                        break;
-                    case Compte.INDIVIDUEL:
-                        if (c.TypeDeCompte == compte.TypeDeCompte)
-                            throw new TypeCompteMaxLimitException();
-                        else
-                        {
-                            ListeDeComptes.Add(compte);
-                            RC = true;
-                        }
-                        break;
+                    if (c.TypeDeCompte == compte.TypeDeCompte)
+                        throw new TypeCompteMaxLimitException();
                 }
             }
-            return RC;
+                ListeDeComptes.Add(compte);
+                return true;
         }
 
         /// <summary>
