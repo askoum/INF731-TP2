@@ -36,8 +36,15 @@ namespace INF731_TP2
         */
         private static string[] ParseCSV(string ligne)
         {
+<<<<<<< HEAD
             // rajouter trim 
             string[] tableauÉléments = ligne.Split(SEPARATEUR);
+=======
+            string[] tableauÉléments = ligne.Split(SEPARATEUR);
+            for (int i = 0; i < tableauÉléments.Length; ++i)
+                tableauÉléments[i] = tableauÉléments[i].Trim();
+
+>>>>>>> f3971b090d03953245b5dc9f9f03152b252afc70
             return tableauÉléments;
         }
 
@@ -160,7 +167,11 @@ namespace INF731_TP2
             string[] attributs;
             List<Transaction> listeTransactions = new List<Transaction>();
 
+<<<<<<< HEAD
             foreach (var Ligne in File.ReadLines(CHEMIN + nomFichier, Encoding.UTF7).Where(Ligne => Ligne != null))
+=======
+            foreach (var Ligne in File.ReadLines(CHEMIN + nomFichier, Encoding.UTF7).Where(Ligne => Ligne != ""))
+>>>>>>> f3971b090d03953245b5dc9f9f03152b252afc70
             {
                 attributs = ParseCSV(Ligne); // LireLigne(Ligne);
                 if (attributs.Length == 3)
