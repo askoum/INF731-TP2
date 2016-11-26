@@ -55,7 +55,6 @@
     <Compile Include="ICalculateurIntêrét.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Temporaire.cs" />
     <Compile Include="Transaction.cs" />
     <Compile Include="TransactionMonétaire.cs" />
     <Compile Include="TransactionNonMonétaire.cs" />
