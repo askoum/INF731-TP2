@@ -22,20 +22,20 @@ using System.Text;
 ///             <Description> </Description>
 ///         </méthode>
 ///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
+///             <Nom>  EstDécouvert ()</Nom>
+///             <Description> Retourne true si le compte est à découvert </Description>
 ///         </méthode>
 ///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
+///             <Nom> VirementMarge ()</Nom>
+///             <Description> Virement d'un montant sur la marge du compte </Description>
 ///         </méthode>
 ///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
+///             <Nom> CalculerIntérêts() </Nom>
+///             <Description> Calcul les intérêts à partir du solde le plus bas mensuel</Description>
 ///         </méthode>
 ///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
+///             <Nom>  Afficher () </Nom>
+///             <Description>  Affiche les informations du compte </Description>
 ///         </méthode>
 ///         <méthode>
 ///             <Nom> </Nom>

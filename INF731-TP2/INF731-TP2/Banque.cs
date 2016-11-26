@@ -25,28 +25,32 @@ using System.Text;
 ///             <Description> </Description>
 ///         </méthode>
 ///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
+///             <Nom> AjouterClient () </Nom>
+///             <Description> Ajoute un client dans la liste des clients de la banque </Description>
 ///         </méthode>
 ///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
+///             <Nom> AjouterCompte () </Nom>
+///             <Description> Ajoute un compte dans la liste des comptes de la banque </Description>
 ///         </méthode>
 ///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
+///             <Nom> AjouterTransaction () </Nom>
+///             <Description> Ajoute une nouvelle transaction dans la liste des transactions  de la banque </Description>
 ///         </méthode>
 ///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
+///             <Nom> FermerCompte () </Nom>
+///             <Description> Si le compte n'est pas fermé,elle ferme le compte </Description>
 ///         </méthode>
 ///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
+///             <Nom> TrouverClient () </Nom>
+///             <Description> Retrouve un client via le numeroDeClient </Description>
+///         </méthode>
+///           <méthode>
+///             <Nom> TrouverLesComptes () </Nom>
+///             <Description> Liste tous les comptes d'un client </Description>
 ///         </méthode>
 ///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
+///             <Nom> TrouverCompte () </Nom>
+///             <Description> Trouve le compte d'un client a partir de son numero et du numero de compte </Description>
 ///         </méthode>
 ///     </méthodes>
 /// </INF731-TP2>

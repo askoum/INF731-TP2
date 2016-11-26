@@ -23,29 +23,17 @@ using System.Threading.Tasks;
 ///             <Nom> loadClients(String cheminFichier) </Nom>
 ///             <Description> </Description>
 ///         </méthode>
-///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
+///         <méthode> 
+///             <Nom> Afficher() </Nom>
+///             <Description> Affiche TypeTransaction,NuméroClient,NuméroCompte via ToString() </Description>
 ///         </méthode>
 ///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
+///             <Nom> ToString() </Nom>
+///             <Description> Surcharge ToString pour afficher les propriétés de la transaction </Description>
 ///         </méthode>
 ///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
-///         </méthode>
-///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
-///         </méthode>
-///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
-///         </méthode>
-///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
+///             <Nom> Transaction Clone() </Nom>
+///             <Description> crée une nouvelle transaction </Description>
 ///         </méthode>
 ///      </méthodes>
 

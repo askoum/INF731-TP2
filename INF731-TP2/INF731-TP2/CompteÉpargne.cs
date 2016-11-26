@@ -25,28 +25,33 @@ using System.Text;
 ///             <Description> </Description>
 ///         </méthode>
 ///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
+///             <Nom>DéposerAuGuichetAutomatique() </Nom>
+///             <Description> Transaction non supporter par compte Épargne
+///                           lorsqu'on veut faire un depot au guicher automatique 
+///                           elle lance  une exception
+///             </Description>
 ///         </méthode>
 ///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
+///             <Nom>RetirerGuichetAutomatique () </Nom>
+///             <Description> 	Transaction non supporter par compte Épargne
+///                             lorsqu'on  veut faire un retrait au guichet 
+///                             automatique ,elle lance une exception
+///             </Description>
 ///         </méthode>
 ///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
+///             <Nom> RetirerChèque () </Nom>
+///             <Description>Transaction non supporter par compte Épargne 
+///                          lorsqu'on veut faire un retrait par cheque
+///                          elle lance une exception 
+///             </Description>
 ///         </méthode>
 ///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
+///             <Nom>CalculerIntérêts() </Nom>
+///             <Description> Calculer l'intérêt basé sur le solde moyen du compte,à appliquer sur le compte  </Description>
 ///         </méthode>
 ///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
-///         </méthode>
-///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
+///             <Nom> Afficher () </Nom>
+///             <Description>	affiche les informatins du compte </Description>
 ///         </méthode>
 ///     </méthodes>
 /// </INF731-TP2>
@@ -103,7 +108,7 @@ namespace INF731_TP2
         /// </summary>
         /// <param name="montant"></param>
         /// <returns> TransactionTypeDeCompteInvalideException </returns>
-        public override bool DéposerAuGuichet(double montant)
+        public override bool DéposerAuGuichetAutomatique(double montant)
         {
             throw new TransactionTypeDeCompteInvalideException();
         }

@@ -24,28 +24,12 @@ using System.Threading.Tasks;
 ///             <Description> </Description>
 ///         </méthode>
 ///         <méthode>
-///             <Nom> </Nom>
+///             <Nom> Transaction Clone() </Nom>
 ///             <Description> </Description>
 ///         </méthode>
 ///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
-///         </méthode>
-///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
-///         </méthode>
-///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
-///         </méthode>
-///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
-///         </méthode>
-///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
+///             <Nom> Afficher() </Nom>
+///             <Description> Affiche les informations sur la transction non monetaire </Description>
 ///         </méthode>
 ///      </méthodes>
 

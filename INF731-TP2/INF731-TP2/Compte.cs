@@ -24,29 +24,68 @@ using System.Text;
 ///             <Description> </Description>
 ///         </méthode>
 ///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
+///             <Nom> EstActif ()</Nom>
+///             <Description> Retourne le statut compte </Description>
 ///         </méthode>
 ///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
+///             <Nom> RendreActif () </Nom>
+///             <Description> Si le statut du compte est inactif,elle le reactive </Description>
 ///         </méthode>
 ///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
+///             <Nom> RendreInactif() </Nom>
+///             <Description> Rend le compte inactif,si le statut est actif</Description>
 ///         </méthode>
 ///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
+///             <Nom> EstFermer() </Nom>
+///             <Description> Retourne l'etat du compte </Description>
 ///         </méthode>
 ///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
+///             <Nom> FermerCompte() </Nom>
+///             <Description> Ferme definitivement un compte</Description>
 ///         </méthode>
 ///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
+///             <Nom>ResetSoldePlusBas () </Nom>
+///             <Description> Reinitialise le solde le plus bas du compte </Description>
 ///         </méthode>
+///         <méthode>
+///             <Nom> Déposer () </Nom>
+///             <Description> Depot d'un montant dans un compte</Description>
+///         </méthode>   <méthode>
+///             <Nom> DéposerAuGuichetAutomatique () </Nom>
+///             <Description> Depot d'un montant dans un compte au guichet automatique (DGA) </Description>
+///         </méthode>
+///         <méthode>
+///             <Nom>Retirer () </Nom>
+///             <Description> Retrait d'un montant dans un guichet automatique </Description>
+///         </méthode>
+///         <méthode>
+///             <Nom>RetirerGuichetAutomatique () </Nom>
+///             <Description> Retrait d'un montant dans un compte par cheque</Description>
+///         </méthode>
+///         <méthode>
+///             <Nom>RetirerChèque () </Nom>
+///             <Description> Retrait d'un montant dans un compte par cheque </Description>
+///         </méthode>    
+///         <méthode>
+///             <Nom> CalculerIntérêts() </Nom>
+///             <Description> Methode Abstract de calcul d'interet</Description>
+///         </méthode>   
+///         <méthode>
+///             <Nom> AjouterIntérêts </Nom>
+///             <Description> Applique les interets sur un compte </Description>
+///         </méthode> 
+///         <méthode>
+///             <Nom> AfficherSolde() </Nom>
+///             <Description> Affiche le solde du compte</Description>
+///         </méthode>  
+///         <méthode>
+///             <Nom> Afficher()</Nom>
+///             <Description> Affiche les informations d'un compte</Description>
+///         </méthode> 
+///         <méthode>
+///             <Nom>ToString() </Nom>
+///             <Description> Surcharge ToString pour afficher les propriétés du compte</Description>
+///         </méthode> 
 ///      </méthodes>
 namespace INF731_TP2
 {

@@ -23,31 +23,31 @@ using System.Text;
 ///         </méthode>
 ///         <méthode>
 ///             <Nom> loadClients(String cheminFichier) </Nom>
-///             <Description> </Description>
+///             <Description> 	Lit un fichier et génère une liste de client  </Description>
 ///         </méthode>
 ///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
+///             <Nom>CréerCompte () </Nom>
+///             <Description> Lit une ligne csv et retourne les informations d'un compte </Description>
 ///         </méthode>
 ///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
+///             <Nom> loadComptes () </Nom>
+///             <Description> Lit un fichier et génère une liste de compte </Description>
 ///         </méthode>
 ///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
+///             <Nom> ChargerTransactions ()</Nom>
+///             <Description> Lit fichier transaction et charge les transactions </Description>
 ///         </méthode>
 ///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
+///             <Nom>ÉcrireJournalTransaction () </Nom>
+///             <Description> Ecrire la transaction dans le journal de transaction  (Fichier de sortie) </Description>
+///         </méthode>
+///          <méthode>
+///             <Nom> EcrireJournalClient </Nom>
+///             <Description> Ecrire la liste de clients dans le journal de client  (Fichier de sortie)</Description>
 ///         </méthode>
 ///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
-///         </méthode>
-///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
+///             <Nom> EcrireJournalCompte () </Nom>
+///             <Description> Ecrire la liste de compte dans le journal de compte  (Fichier de sortie)</Description>
 ///         </méthode>
 ///      </méthodes>
 /// </INF731-TP2>
@@ -123,7 +123,7 @@ namespace INF731_TP2
         }
    
         /// <summary>
-        /// Lit une ligne csv et retourne les informations d'un client 
+        /// Lit une ligne csv et retourne les informations d'un compte 
         /// </summary>
         /// <param name="tableauDesÉléments"></param>
         /// <returns></returns>

@@ -24,24 +24,18 @@ using System.Threading.Tasks;
 ///             <Description> </Description>
 ///         </méthode>
 ///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
-///         </méthode>
-///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
-///         </méthode>
-///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
-///         </méthode>
-///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
-///         </méthode>
-///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
+///             <Nom>EffectuerTransaction() </Nom>
+///             <Description> effectue une transaction monetaire selon les differents types de transaction qui existent a savoir : 
+///               VM  : VirementMarge
+///               C   : RetirerChèque
+///               RGA : RetirerGuichetAutomatique
+///               R   : Retirer
+///               DGA : DéposerAuGuichetAutomatique
+///               D   : Depot
+///               S   : AfficherSolde
+///               A   : RendreActif
+///               I   : RendreInactif
+///             </Description>
 ///         </méthode>
 ///         <méthode>
 ///             <Nom> </Nom>

@@ -24,28 +24,16 @@ using System.Threading.Tasks;
 ///             <Description> </Description>
 ///         </méthode>
 ///         <méthode>
-///             <Nom> </Nom>
+///             <Nom> Transaction Clone() </Nom>
 ///             <Description> </Description>
 ///         </méthode>
-///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
+///        <méthode> 
+///             <Nom> Afficher() </Nom>
+///             <Description> Affiche les informations de la transaction monetaire via ToString() </Description>
 ///         </méthode>
 ///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
-///         </méthode>
-///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
-///         </méthode>
-///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
-///         </méthode>
-///         <méthode>
-///             <Nom> </Nom>
-///             <Description> </Description>
+///             <Nom> ToString() </Nom>
+///             <Description> Surcharge ToString pour afficher les propriétés de la transaction </Description>
 ///         </méthode>
 ///      </méthodes>
 
